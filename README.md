@@ -1,2 +1,2 @@
-# L-L
+# L&L
 Lore and Literature
