@@ -1,110 +1,134 @@
 :root {
     --bg: #12131a;
-    --card: #1e2030;
-    --text: #f2f2f2;
+    --card: rgba(255, 255, 255, 0.06);
+    --border: rgba(255, 255, 255, 0.12);
+    --text: rgba(255, 255, 255, 0.9);
     --accent: #7c7cff;
-    --shadow: rgba(0, 0, 0, 0.25);
 }
 
+/* LIGHT MODE */
 body.light {
-    --bg: #f4f4f7;
-    --card: #ffffff;
+    --bg: #f5f6fa;
+    --card: rgba(255, 255, 255, 0.7);
+    --border: rgba(0, 0, 0, 0.08);
     --text: #111;
     --accent: #4a4aff;
-    --shadow: rgba(0, 0, 0, 0.1);
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial;
 }
 
 body {
-    background: var(--bg);
-    color: var(--text);
     min-height: 100vh;
+    background: radial-gradient(circle at top, #1b1d2a, var(--bg));
+    color: var(--text);
     transition: 0.3s ease;
 }
 
-/* Top bar */
+/* subtle animated glow background */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at 20% 20%, rgba(124,124,255,0.15), transparent 40%),
+                radial-gradient(circle at 80% 60%, rgba(0,200,255,0.10), transparent 40%);
+    pointer-events: none;
+}
+
+/* TOP BAR */
 .top-bar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px;
+    backdrop-filter: blur(12px);
 }
 
 #themeToggle {
-    border: none;
+    border: 1px solid var(--border);
     background: var(--card);
     color: var(--text);
     padding: 10px 12px;
-    border-radius: 10px;
+    border-radius: 12px;
     cursor: pointer;
     transition: 0.2s ease;
+    backdrop-filter: blur(14px);
 }
 
 #themeToggle:hover {
     transform: scale(1.05);
 }
 
-/* Grid */
+/* GRID */
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     gap: 16px;
     padding: 20px;
     max-width: 600px;
-    margin: 0 auto;
+    margin: 40px auto;
 }
 
-/* Cards */
+/* GLASS CARDS */
 .card {
-    background: var(--card);
-    color: var(--text);
     text-decoration: none;
-    border-radius: 16px;
-    padding: 20px;
+    color: var(--text);
+
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+
+    padding: 22px;
     text-align: center;
-    box-shadow: 0 8px 20px var(--shadow);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+
+    transition: 0.25s ease;
     position: relative;
     overflow: hidden;
 }
 
-/* Hover */
+/* hover: floating glass lift */
 .card:hover {
-    transform: translateY(-6px) scale(1.03);
-    box-shadow: 0 14px 30px var(--shadow);
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 18px 50px rgba(0,0,0,0.35);
+    border-color: rgba(124,124,255,0.4);
 }
 
-/* subtle glow */
+/* subtle light sweep */
 .card::after {
     content: "";
     position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, var(--accent), transparent 60%);
-    opacity: 0;
-    transition: 0.3s ease;
+    inset: 0;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,0.08),
+        transparent
+    );
+    transform: translateX(-100%);
+    transition: 0.6s ease;
 }
 
 .card:hover::after {
-    opacity: 0.08;
+    transform: translateX(100%);
 }
 
-/* icon */
+/* ICON */
 .icon {
     font-size: 2rem;
     margin-bottom: 10px;
 }
 
-/* label */
+/* LABEL */
 .label {
-    font-size: 1rem;
-    font-weight: bold;
+    font-weight: 600;
+    letter-spacing: 0.3px;
 }
