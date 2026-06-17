@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Dashboard</title>
+    <title>My Projects</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header class="topbar">
-        <h1>Projects</h1>
+    <header class="top-bar">
+        <h1>Projects Dashboard</h1>
 
         <button id="themeToggle">🌙</button>
     </header>
@@ -17,63 +17,52 @@
     <main class="grid">
 
         <a class="card" href="Beowulf/">
-            <div class="icon">📖</div>
+            <div class="icon">1</div>
             <div class="label">Beowulf</div>
         </a>
 
         <a class="card" href="#">
-            <div class="icon">1</div>
+            <div class="icon">2</div>
             <div class="label">Project 2</div>
         </a>
 
         <a class="card" href="#">
-            <div class="icon">2</div>
+            <div class="icon">3</div>
             <div class="label">Project 3</div>
         </a>
 
         <a class="card" href="#">
-            <div class="icon">3</div>
+            <div class="icon">4</div>
             <div class="label">Project 4</div>
         </a>
 
         <a class="card" href="#">
-            <div class="icon">4</div>
+            <div class="icon">5</div>
             <div class="label">Project 5</div>
         </a>
 
         <a class="card" href="#">
-            <div class="icon">5</div>
+            <div class="icon">6</div>
             <div class="label">Project 6</div>
         </a>
 
         <a class="card" href="#">
-            <div class="icon">6</div>
+            <div class="icon">7</div>
             <div class="label">Project 7</div>
         </a>
 
         <a class="card" href="#">
-            <div class="icon">7</div>
+            <div class="icon">8</div>
             <div class="label">Project 8</div>
         </a>
 
         <a class="card" href="#">
-            <div class="icon">8</div>
+            <div class="icon">9</div>
             <div class="label">Project 9</div>
         </a>
 
     </main>
 
-    <script>
-        const btn = document.getElementById("themeToggle");
-
-        btn.addEventListener("click", () => {
-            document.body.classList.toggle("light");
-
-            btn.textContent = document.body.classList.contains("light")
-                ? "🌞"
-                : "🌙";
-        });
-    </script>
-
+    <script src="script.js"></script>
 </body>
 </html>
