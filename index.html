@@ -3,20 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Works</title>
+    <title>Project Dashboard</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="menu">
-        <h1 class="title">Projects</h1>
+    <header class="topbar">
+        <h1>Projects</h1>
 
-        <nav class="menu-links">
-            <a href="Beowulf/">Beowulf</a>
-            <!-- Future links go here -->
-            <!-- <a href="AnotherProject/">Another Project</a> -->
-        </nav>
-    </div>
+        <button id="themeToggle">🌙</button>
+    </header>
+
+    <main class="grid">
+
+        <a class="card" href="Beowulf/">
+            <div class="icon">📖</div>
+            <div class="label">Beowulf</div>
+        </a>
+
+        <a class="card" href="#">
+            <div class="icon">1</div>
+            <div class="label">Project 2</div>
+        </a>
+
+        <a class="card" href="#">
+            <div class="icon">2</div>
+            <div class="label">Project 3</div>
+        </a>
+
+        <a class="card" href="#">
+            <div class="icon">3</div>
+            <div class="label">Project 4</div>
+        </a>
+
+        <a class="card" href="#">
+            <div class="icon">4</div>
+            <div class="label">Project 5</div>
+        </a>
+
+        <a class="card" href="#">
+            <div class="icon">5</div>
+            <div class="label">Project 6</div>
+        </a>
+
+        <a class="card" href="#">
+            <div class="icon">6</div>
+            <div class="label">Project 7</div>
+        </a>
+
+        <a class="card" href="#">
+            <div class="icon">7</div>
+            <div class="label">Project 8</div>
+        </a>
+
+        <a class="card" href="#">
+            <div class="icon">8</div>
+            <div class="label">Project 9</div>
+        </a>
+
+    </main>
+
+    <script>
+        const btn = document.getElementById("themeToggle");
+
+        btn.addEventListener("click", () => {
+            document.body.classList.toggle("light");
+
+            btn.textContent = document.body.classList.contains("light")
+                ? "🌞"
+                : "🌙";
+        });
+    </script>
 
 </body>
 </html>
