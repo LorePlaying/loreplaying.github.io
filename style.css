@@ -1,27 +1,30 @@
 :root {
-    /* Cappuccino DARK */
+    /* CAPPUCCINO DARK */
     --bg: #1b1410;
     --bg2: #241a14;
 
-    --card: rgba(255, 244, 230, 0.08);
-    --border: rgba(255, 220, 180, 0.18);
+    /* glass stays consistent */
+    --card: rgba(255, 244, 230, 0.06);
+    --border: rgba(255, 220, 180, 0.16);
 
     --text: rgba(255, 240, 225, 0.92);
     --accent: #d6a679;
 }
 
-/* LIGHT (still glassy, not flat white) */
+/* LIGHT MODE */
 body.light {
     --bg: #f5efe6;
     --bg2: #fffaf3;
 
+    /* IMPORTANT FIX: keep glass feel here too */
     --card: rgba(255, 255, 255, 0.55);
-    --border: rgba(80, 60, 40, 0.12);
+    --border: rgba(60, 40, 30, 0.12);
 
     --text: #2a1f18;
     --accent: #a06b3b;
 }
 
+/* RESET */
 * {
     margin: 0;
     padding: 0;
@@ -32,21 +35,18 @@ body.light {
 body {
     min-height: 100vh;
     color: var(--text);
-
     background: radial-gradient(circle at top, var(--bg2), var(--bg));
     transition: 0.3s ease;
 }
 
-/* IMPORTANT: gives blur something to work with */
+/* ambient glow */
 body::before {
     content: "";
     position: fixed;
     inset: 0;
-
     background:
         radial-gradient(circle at 20% 20%, rgba(214,166,121,0.10), transparent 40%),
         radial-gradient(circle at 80% 60%, rgba(160,107,59,0.08), transparent 45%);
-
     pointer-events: none;
 }
 
@@ -64,11 +64,11 @@ body::before {
     color: var(--text);
     padding: 10px 12px;
     border-radius: 12px;
+    cursor: pointer;
 
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
 
-    cursor: pointer;
     transition: 0.2s ease;
 }
 
@@ -81,13 +81,12 @@ body::before {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     gap: 16px;
-
     padding: 20px;
     max-width: 600px;
     margin: 40px auto;
 }
 
-/* GLASS CARD (FIXED) */
+/* CARD (GLASS WORKS IN BOTH MODES NOW) */
 .card {
     text-decoration: none;
     color: var(--text);
@@ -99,8 +98,9 @@ body::before {
     padding: 22px;
     text-align: center;
 
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+    /* THE KEY FIX */
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
 
     box-shadow: 0 10px 25px rgba(0,0,0,0.25);
 
@@ -109,26 +109,24 @@ body::before {
     overflow: hidden;
 }
 
-/* hover lift */
+/* hover works in both modes now */
 .card:hover {
     transform: translateY(-7px) scale(1.03);
-    box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+    box-shadow: 0 18px 45px rgba(0,0,0,0.35);
     border-color: rgba(214,166,121,0.5);
 }
 
-/* shimmer */
+/* shimmer effect */
 .card::after {
     content: "";
     position: absolute;
     inset: 0;
-
     background: linear-gradient(
         120deg,
         transparent,
-        rgba(255, 230, 200, 0.10),
+        rgba(255,255,255,0.10),
         transparent
     );
-
     transform: translateX(-100%);
     transition: 0.6s ease;
 }
